@@ -29,7 +29,7 @@ import {
   getAllStaff,
   getAllAlumni,
   getAllPartner,
-  getAllStudent
+  getAllStudent,
 } from "../controllers/user_controller.js";
 
 import authenticateUser from "../middleware/auth.js";
@@ -44,5 +44,6 @@ router.route("/getAllStaff").get(getAllStaff);
 router.route("/getAllAlumni").get(getAllAlumni);
 router.route("/getAllPartner").get(getAllPartner);
 router.route("/getAllStudent").get(getAllStudent);
+
 
 export default router;

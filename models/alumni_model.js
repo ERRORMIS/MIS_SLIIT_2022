@@ -2,54 +2,62 @@ import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
 
 const AlumniSchema = new mongoose.Schema(
-{
+  {
     name: {
-        type: String,
+      type: String,
     },
     lastName: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     nic: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     email: {
-        type: String,
+      type: String,
     },
     gender: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     contactNo: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     address: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     jobTitle: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     company: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     graduatedYear: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     img: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     // createdBy: {
     //     type: mongoose.Types.ObjectId,
     //     ref: 'User',
     //     required: [true, 'Please provide user'],
     //},
+    specialization: {
+        type: [
+          {
+            value: String,
+            label: String,
+          },
+        ],
+      },
 },
     { timestamps: true }
 )

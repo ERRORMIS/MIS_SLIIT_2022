@@ -1,55 +1,63 @@
-import mongoose from 'mongoose'
-import jwt from 'jsonwebtoken'
+import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
 
 const StudentSchema = new mongoose.Schema(
-{
+  {
     studentID: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     name: {
-        type: String,
+      type: String,
     },
     lastName: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     nic: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     email: {
-        type: String,
+      type: String,
     },
     gender: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     img: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     contactNo: {
-        type: String,
-        default: ''
+      type: String,
+      default: "",
     },
     faculty: {
         type: String,
         default: ''
-    }
+    },
     // createdBy: {
     //     type: mongoose.Types.ObjectId,
     //     ref: 'User',
     //     required: [true, 'Please provide user'],
     //},
+    specialization: {
+        type: [
+          {
+            value: String,
+            label: String,
+          },
+        ],
+      },
 },
     { timestamps: true }
 )
 
 StudentSchema.methods.createJWT = function () {
-    return jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_LIFETIME,
-    })
-}
+  return jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_LIFETIME,
+  });
+};
 
-export default mongoose.model('Student', StudentSchema)
+export default mongoose.model("Student", StudentSchema);
