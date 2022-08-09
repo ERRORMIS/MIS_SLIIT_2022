@@ -1,0 +1,33 @@
+.card{
+    margin-bottom: 10px;
+}
+
+.row {
+    text-align: left;
+}
+
+.profile-img{
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}
+.card-title{
+    flex-direction: column; 
+    text-align: right;
+    float: right; 
+    margin-right: 15px;
+
+}
+.card-text{
+    margin-top: 0;
+    text-align: center;
+
+}
+.btn-profile{
+    display:flex;
+    flex-direction: column; 
+    text-align: right;
+    float: right; 
+    margin-right: 15px;
+  
+}
