@@ -17,15 +17,16 @@ const JobsContainer = () => {
     searchType,
     sort,
     numOfPages,
-  } = useAppContext()
+    projectRequirementSearch,
+  } = useAppContext();
 
   useEffect(() => {
-    getJobs() 
+    getJobs();
     // eslint-disable-next-line
-  }, [page, search, searchStatus, searchType, sort])
-  
+  }, [page, search, searchStatus, searchType, sort, projectRequirementSearch]);
+
   if (isLoading) {
-    return <Loading center />
+    return <Loading center />;
   }
 
   if (jobs.length === 0) {
@@ -33,22 +34,22 @@ const JobsContainer = () => {
       <Wrapper>
         <h2>No projects to display...</h2>
       </Wrapper>
-    )
+    );
   }
 
   return (
     <Wrapper>
       <h5>
-        {totalJobs} project{jobs.length > 1 && 's'} found
+        {totalJobs} project{jobs.length > 1 && "s"} found
       </h5>
-      <div className='jobs'>
+      <div className="jobs">
         {jobs.map((job) => {
-          return <Job key={job._id} {...job} />
+          return <Job key={job._id} {...job} />;
         })}
       </div>
       {numOfPages > 1 && <PageBtnContainer />}
     </Wrapper>
-  )
-}
+  );
+};
 
 export default JobsContainer
