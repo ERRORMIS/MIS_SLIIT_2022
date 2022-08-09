@@ -3,26 +3,35 @@ import validator from 'validator'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
-const LoginSchema = new mongoose.Schema({
+const LoginSchema = new mongoose.Schema(
+  {
     userID: {
       type: mongoose.Types.ObjectId,
+      required: true,
+      refPath: 'userModel'
+    },
+    userModel: {
+      type: String,
+      required: true,
+      enum: ["Alumni", "Incubator", "Partner", "Staff", "Student"],
     },
     type: {
-        type: String,
-        required: [true, 'Please provide type'],
+      type: String,
+      required: [true, "Please provide type"],
     },
     email: {
-        type: String,
-        required: [true, 'Please provide email'],
+      type: String,
+      required: [true, "Please provide email"],
     },
     password: {
-        type: String,
-        required: [true, 'Please provide password'],
-        minlength: 6,
-        select: false,
+      type: String,
+      required: [true, "Please provide password"],
+      minlength: 6,
+      select: false,
     },
-},{ timestamps: true }
-)
+  },
+  { timestamps: true }
+);
 
 LoginSchema.pre('save', async function () {
   // console.log(this.modifiedPaths())
